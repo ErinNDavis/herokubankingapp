@@ -1,0 +1,34 @@
+{
+    "name": "capstone-bank",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "proxy": "http://localhost:3000",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "cd client && npm run build",
+      "install-client": "cd frontend && npm install",
+      "heroku-postbuild": "npm run install-client && npm run build",
+      "server": "nodemon backend/index.js",
+      "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+      "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "body-parser": "^1.19.0",
+      "concurrently": "^5.3.0",
+      "cors": "^2.8.5",
+      "dot-env": "0.0.1",
+      "dotenv": "^8.2.0",
+      "express": "^4.17.1",
+      "jsonwebtoken": "^8.5.1",
+      "mongoose": "^5.10.18",
+      "nodemon": "^2.0.7"
+    },
+    "devDependencies": {
+      "eslint": "^7.14.0"
+    }
+  }
