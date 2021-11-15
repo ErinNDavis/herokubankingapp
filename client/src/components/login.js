@@ -3,7 +3,6 @@ import { Card, Form, Button, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PropTypes from 'prop-types';
 import "./home.css";
-import { DataContext } from "../App.js"
 
 async function loginUser(credentials){
   const result= await fetch('/api/login', {
