@@ -4,12 +4,13 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "cd client && cd public && npm run build",
         "install-client": "cd client && npm install",
-        "heroku-postbuild": "npm run install-client",
+        "heroku-postbuild": "npm run install-client && npm run build",
         "server": "node index.js",
-        "develop": "concurrently --kill-others-on-fail \"npm run server\" \"cd client && npm start\"",
-        "start": "concurrently --kill-others-on-fail \"npm run server\" \"cd client && npm start\""
+        "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+        "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
     },
     "engineStrict": true,
     "engines": {
