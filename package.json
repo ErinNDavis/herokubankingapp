@@ -5,9 +5,13 @@
     "main": "index.js",
     "proxy": "http://localhost:3000",
     "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "cd client && npm run build",
       "install-client": "cd client && npm install",
-      "start": "node backend/server.js",
-      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
+      "heroku-postbuild": "npm run install-client && npm run build",
+      "server": "nodemon ./backend/index.js",
+      "develop": "concurrently --kill-others-on-fail \"npm run index.js\" \"npm run start --prefix client\"",
+      "start": "concurrently --kill-others-on-fail \"npm run index.js\" \"npm run start --prefix client\""
     },
     "keywords": [],
     "author": "",
