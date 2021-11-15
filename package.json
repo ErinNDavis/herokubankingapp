@@ -9,8 +9,8 @@
         "install-client": "cd client && npm install",
         "heroku-postbuild": "npm run install-client && npm run build",
         "server": "node index.js",
-        "develop": "concurrently --kill-others-on-fail \"npm run server\" \"cd client && npm run start\"",
-        "start": "concurrently --kill-others-on-fail \"npm run server\" \"cd client && npm run start\""
+        "develop": "concurrently --kill-others-on-fail \"npm run server\" \"cd client/public && npm run start\"",
+        "start": "concurrently --kill-others-on-fail \"npm run server\" \"cd client/public && npm run start\""
     },
     "engineStrict": true,
     "engines": {
