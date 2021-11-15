@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 const User = require('./models/users');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const middleware = require('./middlewares')
 
 const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
