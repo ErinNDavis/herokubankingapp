@@ -12,9 +12,10 @@
         "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
         "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
     },
+    "engineStrict": true,
     "engines": {
-        "node": "16.x"
-      },
+        "node": "16.4.2"
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",
@@ -29,7 +30,8 @@
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.10.18",
-        "nodemon": "^2.0.7"
+        "nodemon": "^2.0.7",
+        "semver": "^7.3.5"
     },
     "devDependencies": {
         "eslint": "^7.14.0"
