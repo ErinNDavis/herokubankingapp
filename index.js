@@ -155,6 +155,8 @@ app.post('/api/withdraw', async (req, res) => {
 
 const port = process.env.PORT || 3001;
 
+const path = require("path");
+
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.get("*", function (request, response) {
