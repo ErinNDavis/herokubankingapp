@@ -11,7 +11,7 @@
       "heroku-postbuild": "npm run install-client && npm run build",
       "server": "nodemon ./backend/index.js",
       "develop": "concurrently --kill-others-on-fail \"npm run index.js\" \"npm run start --prefix client\"",
-      "start": "npm start"
+      "start": "concurrently --kill-others-on-fail \"npm run index.js\" \"npm run start --prefix client\""
     },
     "keywords": [],
     "author": "",
