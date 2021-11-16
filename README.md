@@ -13,7 +13,7 @@
 <img src="Screen Shot 2021-11-16 at 9.13.27 AM.png">
 <img src="Screen Shot 2021-11-16 at 9.13.42 AM.png">
 <img src="Screen Shot 2021-11-16 at 9.13.57 AM.png">
-<img src="Screen Shot 2021-11-16 at 9.14.18 AM.png">
+<img src="Screen Shot 2021-11-16 at 9.14.33 AM.png">
 <img src="Screen Shot 2021-11-16 at 9.14.25 AM.png">
 <img src="Screen Shot 2021-11-16 at 9.14.18 AM.png">
 
