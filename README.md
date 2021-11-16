@@ -15,6 +15,8 @@
 <img src="Screen Shot 2021-11-16 at 9.13.57 AM.png">
 <img src="Screen Shot 2021-11-16 at 9.14.33 AM.png">
 <img src="Screen Shot 2021-11-16 at 9.14.25 AM.png">
+<img src="Screen Shot 2021-11-16 at 9.24.17 AM.png">
+<img src="Screen Shot 2021-11-16 at 9.24.31 AM.png">
 <img src="Screen Shot 2021-11-16 at 9.14.18 AM.png">
 
 ### Technology used:
