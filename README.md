@@ -20,7 +20,7 @@
 <img src="Screen Shot 2021-11-16 at 9.14.18 AM.png">
 
 ### Technology used:
-##### This project was created Javascript, React, Mongoose, Mongodb Atlas
+##### This project was created using Javascript, React, ReactDOM, Express, Mongoose, Mongodb Atlas
 
 ### Features:
 ##### The user is able to create an account with the bank, login to their account, deposit and withdraw fictional funds, change their password, and permanently close their account.
