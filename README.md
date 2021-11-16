@@ -4,7 +4,7 @@
 ##### This is a banking application with limited security features. This is solely a coding exercise to help develop the skills to be able to write and deploy a full stack MERN application.
 
 ### Installation Guidelines: 
-##### From this repository's page on GitHub, click the green button labeled Code. Click "clone with HTTPs" and copy the URL. Open terminal and change the current working directory to the location where you want the cloned directory. Then type git clone and paste the URL that was copied and press enter. Once on your local machine type cd into the root directory and type "npm run start" into terminal to run application in browser. Navigate to localhost:3001 in your web browser to interact with the application. 
+##### From this repository's page on GitHub, click the green button labeled Code. Click "clone with HTTPs" and copy the URL. Open terminal and change the current working directory to the location where you want the cloned directory. Then type git clone and paste the URL that was copied and press enter. Once on your local machine make sure you are in the root directory and type "npm run start" into terminal to run application in browser. Navigate to localhost:3001 in your web browser to interact with the application. 
 
 ### Screenshots:
 <img src="Screen Shot 2021-11-16 at 9.12.15 AM.png">
