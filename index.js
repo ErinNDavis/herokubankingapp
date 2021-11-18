@@ -6,17 +6,28 @@ const bodyParser = require("body-parser");
 const User = require('./users');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
+
+const swaggerOptions = {
+	swaggerDefinition: {
+		info: {
+			title: 'Banking API',
+			version: '1.0.0',
+			description:
+			"this is a simple banking app"
+		}
+	},
+	apis: ['index.js']
+};
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
-
-//cors-------------------------------------------------------------------------
 
 const cors = require("cors");
 app.use(cors());
 
-//connect to mongodb-----------------------------------------------------------
-
-//const dbURI = "mongodb://localhost:27017/badbank";
 const dbURI = "mongodb+srv://Erin:secret001@cluster0.pj6pv.mongodb.net/badbank?retryWrites=true&w=majority"
 app.use(express.json());
 
@@ -32,8 +43,16 @@ db.once("open", () => {console.log("atlas DB started successfully")});
 
 app.use(bodyParser.json())
 
-//login-----------------------------------------------------------------------
-
+/**
+ * @swagger
+ * /api/login:
+ * post:
+ * summary: User login in
+ * responses:
+ * 200:
+ * description: logged in user
+ * 
+ */
 app.post('/api/login', async (req, res) => {
 	const { email, password } = req.body
 	const user = await User.findOne({ email }).lean()
@@ -44,7 +63,6 @@ app.post('/api/login', async (req, res) => {
 
 	if (await bcrypt.compare(password, user.password)) {
 		
-		// the username, password combination is successful
 		const token = jwt.sign(
 			{
 				id: user._id,
@@ -59,7 +77,16 @@ app.post('/api/login', async (req, res) => {
 	res.json({ status: 'error', error: 'Invalid email/password' })
 })
 
-//signup----------------------------------------------------------------------
+/**
+ * @swagger
+ * /api/signup:
+ * post:
+ * summary: Create an account
+ * responses:
+ * 200:
+ * description: Successfully created a user
+ * 
+ */
 
 app.post('/api/signup', async (req, res) => {
 	const { name, email, password: plainTextPassword, balance } = req.body
@@ -106,13 +133,20 @@ app.post('/api/signup', async (req, res) => {
 	res.json({ status: 'ok' })
 })
 
-//token-------------------------------------------------------------------------
-
 app.use('/api/login', (req, res) => {
 	res.send({token});
 });
 
-//delete Account----------------------------------------------------------------
+/**
+ * @swagger
+ * /api/home:
+ * delete:
+ * summary: Permanently delete user account
+ * responses:
+ * 200:
+ * description: Successly deleted account
+ * 
+ */
 
 app.delete('/api/home', async (req, res) => {
   const { email } = req.body
@@ -120,7 +154,16 @@ app.delete('/api/home', async (req, res) => {
   console.log('User account deleted: ', doc)
 });
 
-//Change Pwd----------------------------------------------------------------------
+/**
+ * @swagger
+ * /api/changePwd:
+ * post:
+ * summary: Change user password
+ * responses:
+ * 200:
+ * description: Successfully changed user password
+ * 
+ */
 
 app.post('/api/changePwd', async (req, res) => {
 	const { email, password: plainTextPassword } = req.body
@@ -132,7 +175,16 @@ app.post('/api/changePwd', async (req, res) => {
 	doc.password;
 })
 
-//update deposit/withdraw--------------------------------------------------------
+/**
+ * @swagger
+ * /api/deposit:
+ * post:
+ * summary: Deposit cash into user account
+ * responses:
+ * 200:
+ * description: Successfully deposited cash
+ * 
+ */
 
 app.post('/api/deposit', async (req, res) => {
 	const { email, status } = req.body
@@ -142,6 +194,18 @@ app.post('/api/deposit', async (req, res) => {
 	);
 	doc.balance;
 })
+
+/**
+ * @swagger
+ * /api/withdraw:
+ * post:
+ * summary: Withdraw cash from user account
+ * responses:
+ * 200:
+ * description: Successfully withdrew cash
+ * 
+ */
+
 app.post('/api/withdraw', async (req, res) => {
 	const { email, status } = req.body
 	const doc = await User.findOneAndUpdate(
