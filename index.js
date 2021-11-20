@@ -9,20 +9,6 @@ const jwt = require('jsonwebtoken');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 
-const swaggerOptions = {
-	swaggerDefinition: {
-		info: {
-			title: 'Banking API',
-			version: '1.0.0',
-			description:
-			"this is a simple banking app"
-		}
-	},
-	apis: ['index.js']
-};
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
-
 const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
 const cors = require("cors");
@@ -43,16 +29,7 @@ db.once("open", () => {console.log("atlas DB started successfully")});
 
 app.use(bodyParser.json())
 
-/**
- * @swagger
- * /api/login:
- * post:
- * summary: User login in
- * responses:
- * 200:
- * description: logged in user
- * 
- */
+//login------------------------------------------------------------------------------------
 app.post('/api/login', async (req, res) => {
 	const { email, password } = req.body
 	const user = await User.findOne({ email }).lean()
@@ -77,16 +54,7 @@ app.post('/api/login', async (req, res) => {
 	res.json({ status: 'error', error: 'Invalid email/password' })
 })
 
-/**
- * @swagger
- * /api/signup:
- * post:
- * summary: Create an account
- * responses:
- * 200:
- * description: Successfully created a user
- * 
- */
+//create an account------------------------------------------------------------------
 
 app.post('/api/signup', async (req, res) => {
 	const { name, email, password: plainTextPassword, balance } = req.body
@@ -137,16 +105,7 @@ app.use('/api/login', (req, res) => {
 	res.send({token});
 });
 
-/**
- * @swagger
- * /api/home:
- * delete:
- * summary: Permanently delete user account
- * responses:
- * 200:
- * description: Successly deleted account
- * 
- */
+//delete account----------------------------------------------------------------
 
 app.delete('/api/home', async (req, res) => {
   const { email } = req.body
@@ -154,16 +113,7 @@ app.delete('/api/home', async (req, res) => {
   console.log('User account deleted: ', doc)
 });
 
-/**
- * @swagger
- * /api/changePwd:
- * post:
- * summary: Change user password
- * responses:
- * 200:
- * description: Successfully changed user password
- * 
- */
+//change pwd-----------------------------------------------------------------
 
 app.post('/api/changePwd', async (req, res) => {
 	const { email, password: plainTextPassword } = req.body
@@ -175,16 +125,7 @@ app.post('/api/changePwd', async (req, res) => {
 	doc.password;
 })
 
-/**
- * @swagger
- * /api/deposit:
- * post:
- * summary: Deposit cash into user account
- * responses:
- * 200:
- * description: Successfully deposited cash
- * 
- */
+//deposit/withdraw----------------------------------------------------------
 
 app.post('/api/deposit', async (req, res) => {
 	const { email, status } = req.body
@@ -194,17 +135,6 @@ app.post('/api/deposit', async (req, res) => {
 	);
 	doc.balance;
 })
-
-/**
- * @swagger
- * /api/withdraw:
- * post:
- * summary: Withdraw cash from user account
- * responses:
- * 200:
- * description: Successfully withdrew cash
- * 
- */
 
 app.post('/api/withdraw', async (req, res) => {
 	const { email, status } = req.body
