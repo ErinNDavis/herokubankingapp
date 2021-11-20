@@ -6,8 +6,6 @@ const bodyParser = require("body-parser");
 const User = require('./users');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const swaggerJsDoc = require('swagger-jsdoc');
-const swaggerUI = require('swagger-ui-express');
 
 const JWT_SECRET = 'sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk'
 
@@ -145,7 +143,7 @@ app.post('/api/withdraw', async (req, res) => {
 	doc.balance;
 })
 
-//connect to server-------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 
 const port = process.env.PORT || 3001;
 
